@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import VueRouter from 'vue-router'
 
 const DashboardLayout = () => import(/* webpackChunkName: "dashboard" */ '../components/dashboardLayout.vue')
+const Login = () => import(/* webpackChunkName: "login" */ '../components/login.vue')
 
 function loadView(view){
     return() => import(/* webpackChunkName: "view-[request]" */ `../components/dashboardContents/${view}.vue`)
@@ -10,21 +10,26 @@ function loadView(view){
 
 const routes = [
     {
-        path: '/',
+        path: '/dashboard',
         component: DashboardLayout,
         children: [
             {
                 name: 'UserController',
-                path: '',
+                path: '/user',
                 component: loadView('userController')
             },
             {
                 name: 'SparepartController',
-                path: 'sparepart',
+                path: '/sparepart',
                 component: loadView('sparepartController')
             }
         ]
     },
+    {
+        path: '/',
+        component: Login,
+        name: 'Login'
+    }
 ]
 
 Vue.use(Router)

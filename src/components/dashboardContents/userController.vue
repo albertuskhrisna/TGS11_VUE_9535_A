@@ -88,23 +88,23 @@
                     <v-btn color="blue darken-1" text @click="setForm()">Save</v-btn>         
                 </v-card-actions>       
                 </v-card>     
-            </v-dialog>     
-            <v-snackbar       
-                v-model="snackbar"
-                :color="color"       
-                :multi-line="true"       
-                :timeout="3000">       
-                {{ text }}       
+        </v-dialog>     
+        <v-snackbar       
+            v-model="snackbar"
+            :color="color"       
+            :multi-line="true"       
+            :timeout="3000">       
+            {{ text }}       
                 
-                <v-btn         
-                    dark         
-                    text         
-                    @click="snackbar = false">         
-                    Close       
-                </v-btn>     
-             </v-snackbar>   
-             </v-container> 
-        </template> 
+            <v-btn         
+                dark         
+                text         
+                @click="snackbar = false">         
+                Close       
+            </v-btn>     
+        </v-snackbar>   
+    </v-container> 
+</template> 
     
     <script> 
     export default {    

@@ -39,7 +39,7 @@
         
             <template v-slot:append>
                 <div class="pa-2">
-                    <v-btn block>Logout</v-btn>
+                    <v-btn @click="userlogout()" block>Logout</v-btn>
                 </div>
             </template>
         </v-navigation-drawer>
@@ -75,10 +75,21 @@
             return {         
                 drawer: null,         
                 items: [           
-                    { title: 'User Controller', icon: 'mdi-human-male', to: '/' },
+                    { title: 'User Controller', icon: 'mdi-human-male', to: '/user' },
                     { title: 'Sparepart Controller', icon: 'mdi-human-male', to:'/sparepart' },         
                 ],       
             }     
-        }, 
+        },
+        beforeCreate: function(){
+            if(!this.$session.exists()){
+                this.$router.push('/')
+            }
+        },
+        methods: {
+            userlogout(){
+                this.$session.destroy()
+                this.$router.push('/')
+            }
+        }
     } 
 </script>
